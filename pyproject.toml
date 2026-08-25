@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,10 +7,19 @@ name = "mcap"
 version = "0.1.0"
 description = "MCAP: Monte Carlo adjusted profile."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 authors = [{ name = "ChaosDonkey06" }]
-license = { file = "LICENSE" }
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "build>=1.2", "twine>=5", "ruff>=0.6"]
+
+[project.scripts]
+mcap = "mcap.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["mcap*"]
+where = ["src"]
